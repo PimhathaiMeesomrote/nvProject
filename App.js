@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput,Image,SafeAreaView,StyleSheet} from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 
 import { NavigationContainer,DefaultTheme } from '@react-navigation/native';
@@ -39,13 +39,18 @@ function ArticleScreen() {
 
 function CustomDrawerContent(props) {
   return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label='Close drawer' 
-                  onPress={() => props.navigation.closeDrawer()} />
-      <DrawerItem label='Toggle drawer' 
-                  onPress={() => props.navigation.toggleDrawer()} />
-    </DrawerContentScrollView>
+    <SafeAreaView styles={{flex:1}}>
+      <Image source={require('./assets/react_logo.png')}
+      style={styles.sideMenuProfileIcon}
+       />
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+        <DrawerItem label='Close drawer' 
+                    onPress={() => props.navigation.closeDrawer()} />
+        {/* <DrawerItem label='Toggle drawer' 
+                    onPress={() => props.navigation.toggleDrawer()} /> */}
+      </DrawerContentScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -76,4 +81,15 @@ const App = () => {
   );
 }
 
+const styles = StyleSheet.create({
+  sideMenuProfileIcon: {
+  resizeMode: 'center',
+  width: 100,
+  height: 100,
+  borderRadius: 100 / 2,
+  alignSelf: 'center',
+  },
+  })
+
 export default App
+
