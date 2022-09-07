@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
+import HomeScreen from './screens/HomeScreen';
 
 import { NavigationContainer,DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -61,7 +62,7 @@ function MyDrawer() {
         }
       }}
     >
-      <Drawer.Screen name='Feed' component={FeedScreen} />
+      <Drawer.Screen name='Home' component={HomeScreen} />
       <Drawer.Screen name='Notifications' component={ArticleScreen} />
     </Drawer.Navigator>
   );
