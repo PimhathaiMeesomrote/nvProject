@@ -52,7 +52,7 @@ const DetailScreen = ({ navigation, route }) => {
   }
 
   const _onRefresh = () => {
-    getData();
+    getData(id);
   };
 
   useEffect(() => {
