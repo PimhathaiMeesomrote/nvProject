@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text, View, Button, TextInput,Image,SafeAreaView,StyleSheet} from 'react-native';
-import HomeScreen from './screens/HomeScreen';
-
 import { NavigationContainer,DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
@@ -10,7 +8,9 @@ import {
   DrawerItemList,
   DrawerItem
 } from '@react-navigation/drawer';
+import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import DetailScreen from './screens/DetailScreen';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -28,6 +28,26 @@ function FeedScreen({navigation}) {
       <Button title='toggle drawer' onPress={()=>navigation.toggleDrawer()} />
     </View>
   );
+}
+
+const Stack = createNativeStackNavigator();
+function ProductStack(){
+  return(
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle:{
+          backgroundColor:'#0096da'
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+          fontWeight:'bold'
+        }
+      }}
+    >
+      <Stack.Screen name='Product' component={ProductScreen} />
+      <Stack.Screen name='Detail' component={DetailScreen} />
+    </Stack.Navigator>
+  )
 }
 
 function ArticleScreen() {
@@ -69,7 +89,7 @@ function MyDrawer() {
       }}
     >
       <Drawer.Screen name='Home' component={HomeScreen} />
-      <Drawer.Screen name='Product' component={ProductScreen} />
+      <Drawer.Screen name='Product' component={ProductStack} />
     </Drawer.Navigator>
   );
 }
